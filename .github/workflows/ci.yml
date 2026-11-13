@@ -1,8 +1,6 @@
-name: CI Python
+name: CI
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -85,15 +83,4 @@ jobs:
             if curl --fail --silent http://127.0.0.1:8000/health; then
               exit 0
             fi
-            echo "Tentativa ${attempt}: API ainda não está pronta"
-            sleep 1
-          done
-          exit 1
-
-      - name: Mostrar logs do container
-        if: always()
-        run: docker logs devops-python-api
-
-      - name: Remover o container
-        if: always()
-        run: docker rm --force devops-python-api
+            echo "Tentativa
