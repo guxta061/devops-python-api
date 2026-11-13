@@ -83,4 +83,7 @@ jobs:
             if curl --fail --silent http://127.0.0.1:8000/health; then
               exit 0
             fi
-            echo "Tentativa
+            echo "Tentativa ${attempt}: API ainda não está pronta"
+            sleep 1
+          done
+          exit 1
